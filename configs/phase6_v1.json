@@ -1,0 +1,51 @@
+{
+  "version": "phase6_v1",
+  "cohort": "data/synthetic/cohort10000",
+  "output": "data/results/phase6",
+  "seed": 2026,
+  "history_hours": 168,
+  "bin_hours": 6,
+  "landmark_hours": [168, 1368, 24],
+  "exclude_primary_signals": ["map"],
+  "consumer_signals": ["heart_rate", "hrv_rmssd", "systolic_bp", "diastolic_bp", "spo2", "weight", "steps", "sleep_hours"],
+  "baseline": {
+    "initial_trusted_hours": 120,
+    "recent_exclusion_hours": 48,
+    "update_rate": 0.03,
+    "maximum_update_scale_per_day": 0.05,
+    "sample_acceptance_z": 2.5,
+    "freeze_systems": 2,
+    "freeze_z": 1.5,
+    "reference_hour_bins": 4,
+    "minimum_count": 3,
+    "scale_floors": [4, 4, 4, 3, 3, 0.6, 0.7, 0.25, 30, 0.3, 0.12]
+  },
+  "validation_roles": {"selection": 600, "calibration": 600, "operating": 300},
+  "shadow": {"ridge_alpha": 20, "stable_proxy_max_z": 2.5, "fit_patient_fraction": 0.8, "interval_coverage": 0.9},
+  "tdi": {"covariance_shrinkage": 0.4, "stable_distance_quantile": 0.95, "scale_at_quantile": 0.5, "deviation_z": 1.5},
+  "tabular_candidates": [
+    {"kind": "logistic", "C": 0.1},
+    {"kind": "hist_gradient_boosting", "leaves": 7, "iterations": 80, "learning_rate": 0.08}
+  ],
+  "temporal_candidates": [{"kind": "causal_tcn", "channels": 8, "dilations": [1, 2, 4], "epochs": 8, "batch_size": 1024, "learning_rate": 0.003, "l2": 0.001}],
+  "model_variants": ["prevalence", "ehr_only", "wearable_only", "population_fusion", "personalized_fusion", "full_twin", "full_no_ehr", "full_no_personal", "full_no_tdi", "personal_normal_only", "consumer_twin"],
+  "calibration_candidates": ["none", "platt", "isotonic"],
+  "calibration_folds": 3,
+  "operating_points": {"high_sensitivity_target": 0.8, "low_burden_false_alerts_per_patient_day": 0.02},
+  "challenge": {
+    "population_ranges": {"heart_rate": [50, 100], "spo2": [94, 100], "systolic_bp": [90, 140], "diastolic_bp": [55, 90]},
+    "minimum_observed_range_signals": 3,
+    "required_all_observed_in_range": true,
+    "minimum_personal_abs_z": 1.5,
+    "minimum_baseline_count": 3,
+    "minimum_recent_count": 2,
+    "minimum_personally_deviating_signals": 1
+  },
+  "uncertainty": {"bootstrap_members": 3, "quantiles": [0.05, 0.95]},
+  "metric_bootstraps": 1000,
+  "event_lags_hours": [168, 120, 72, 48, 24, 0],
+  "sensor_ablations": ["hrv_rmssd", "spo2", "bp", "weight", "sleep_hours", "steps"],
+  "primary_selection": "validation-selection 72h AUPRC; other horizons, Brier and paired patient-bootstrap differences reported; no complexity advantage assumed",
+  "evidence_label": "SYNTHETIC POC VALIDATION",
+  "clinical_validation": "NOT CLINICALLY VALIDATED"
+}

@@ -1,0 +1,10 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>TwinCare · Prediction inspection</title><link rel="stylesheet" href="/inference.css"><script type="module" src="/inference.js"></script></head>
+<body><header><a href="/twin-setup">TwinCare</a><nav aria-label="Product"><a href="/medical-records">Medical records</a><a href="/data-connections">Sources</a><a href="/twin-setup">Twin setup</a></nav></header>
+<main><h1>Patient prediction inspection</h1><p>Frozen model inference with patient-specific, received data. Outputs are not clinically validated.</p>
+<section aria-label="Inference controls"><label for="patient">Patient</label><select id="patient"><option value="">Choose a patient</option></select><label for="reference">Reference time (include timezone)</label><input id="reference" type="text"><button id="run">Run inference</button><button id="latest">Load latest</button></section>
+<p id="message" role="status" aria-live="polite">Choose a patient to inspect their predictions.</p>
+<section id="state" aria-label="Latest Twin state"></section>
+<section><h2>Prediction history</h2><div id="history"></div></section>
+<section><h2>Inference trace</h2><p>Patient-owned technical evidence. Feature values and timestamps are available only in this inspection view.</p><pre id="trace" tabindex="0" aria-label="Scrollable inference trace">Select a prediction to inspect its trace.</pre></section>
+</main></body></html>

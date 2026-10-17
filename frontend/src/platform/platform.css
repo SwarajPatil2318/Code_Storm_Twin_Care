@@ -1,0 +1,249 @@
+.twin-platform {
+  --space-1: 8px;
+  --space-2: 12px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 32px;
+  min-height: 100vh;
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+}
+.twin-rail {
+  position: fixed;
+  inset: 0 auto 0 0;
+  width: 70px;
+  padding: 24px 8px;
+  background: #fbfeff;
+  border-right: 1px solid #e4eef6;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  z-index: 10;
+}
+.twin-rail-brand {
+  color: #1380cf;
+  padding: 0;
+  margin-bottom: 32px;
+}
+.twin-rail nav {
+  display: grid;
+  gap: 12px;
+  width: 100%;
+}
+.twin-rail nav button {
+  height: 46px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  color: #517295;
+}
+.twin-rail nav button:hover,
+.twin-rail nav button[aria-current="page"] {
+  background: #e8f5ff;
+  color: #0877be;
+}
+.twin-workspace {
+  margin-left: 70px;
+}
+.twin-header {
+  min-height: 76px;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  background: #f7fbfe;
+  border-bottom: 1px solid #e4eef6;
+}
+.twin-brand {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.8px;
+  color: #112749;
+  white-space: nowrap;
+  padding: 0;
+}
+.twin-brand svg {
+  color: #1380cf;
+}
+.twin-module-switcher {
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  border: 1px solid #e0eaf3;
+  border-radius: 12px;
+  background: #eef5fa;
+  flex-shrink: 0;
+}
+.twin-module-switcher button {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 12px;
+  border-radius: 9px;
+  font-size: 11px;
+  color: #486584;
+  white-space: nowrap;
+}
+.twin-module-switcher button[aria-pressed="true"] {
+  background: #fff;
+  color: #0b5688;
+  box-shadow: 0 2px 8px #25466710;
+  font-weight: 600;
+}
+.twin-header-context {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+.twin-header-context .mt-date {
+  margin-left: 0;
+}
+.twin-module-content {
+  animation: twin-enter 0.2s ease;
+}
+.twin-module-content > [hidden] {
+  display: none;
+}
+.twin-evidence {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 4px 24px 10px;
+  flex-wrap: wrap;
+}
+.twin-evidence button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  padding: 5px 10px;
+  border-radius: 14px;
+  background: #edf0ff;
+  color: #535193;
+}
+.twin-evidence button:nth-child(2) {
+  background: #e7f8ef;
+  color: #17694e;
+}
+.twin-evidence button:nth-child(3) {
+  background: #edf3f9;
+  color: #46698a;
+}
+.twin-loading {
+  padding: 40px;
+  text-align: center;
+}
+.twin-platform :focus-visible {
+  outline: 2px solid #0879bb;
+  outline-offset: 3px;
+}
+.twin-header .patient-context {
+  display: none;
+}
+.twin-header .synthetic-label {
+  font-size: 8px;
+}
+.twin-header .header-actions {
+  gap: 12px;
+}
+.twin-header .header-clinical {
+  display: none;
+}
+@keyframes twin-enter {
+  from {
+    opacity: 0.6;
+    transform: translateY(3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (max-width: 1400px) {
+  .twin-header {
+    gap: 16px;
+    padding-inline: 20px;
+  }
+  .twin-brand {
+    font-size: 22px;
+  }
+  .twin-module-switcher button {
+    padding: 8px;
+    font-size: 10px;
+  }
+  .twin-header-context {
+    gap: 8px;
+  }
+  .twin-header-context > .mt-demo-id,
+  .twin-header-context > .mt-pill,
+  .twin-header .synthetic-label {
+    display: none;
+  }
+}
+@media (max-width: 900px) {
+  .twin-header {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .twin-header-context {
+    flex-basis: 100%;
+    margin-left: 0;
+    justify-content: flex-end;
+  }
+  .twin-module-switcher {
+    margin-left: auto;
+  }
+  .twin-module-switcher button {
+    font-size: 9px;
+  }
+  .twin-evidence {
+    justify-content: center;
+  }
+  .twin-header .header-actions {
+    position: static;
+  }
+}
+@media (max-width: 620px) {
+  .twin-rail {
+    width: 52px;
+    padding-inline: 5px;
+  }
+  .twin-workspace {
+    margin-left: 52px;
+  }
+  .twin-header {
+    padding: 12px;
+  }
+  .twin-brand {
+    font-size: 20px;
+  }
+  .twin-module-switcher {
+    flex: 1;
+    margin: 0;
+  }
+  .twin-module-switcher button {
+    flex: 1;
+    padding: 8px 5px;
+    font-size: 8px;
+    gap: 4px;
+  }
+  .twin-module-switcher button svg {
+    width: 13px;
+  }
+  .twin-evidence {
+    padding-inline: 12px;
+    gap: 8px;
+  }
+  .twin-evidence button {
+    font-size: 8px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .twin-module-content {
+    animation: none;
+  }
+}

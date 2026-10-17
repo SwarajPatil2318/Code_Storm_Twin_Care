@@ -1,0 +1,6 @@
+{
+  "candidate": "temporal_recovery_rule",
+  "attenuation": 0.65,
+  "total_reliability_candidate_budget": 2,
+  "justification": "The first offset-logistic candidate failed the recovery false-alert gate. Evaluate one fixed temporal recovery rule on the same persisted subset; no strength sweep or resampling."
+}

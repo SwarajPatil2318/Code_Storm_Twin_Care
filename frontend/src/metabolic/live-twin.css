@@ -1,0 +1,275 @@
+/* Runtime controls fit inside the approved replay strip; primary grid untouched. */
+.mt-replay .mt-replay-label {
+  flex: 0 0 270px;
+}
+.mt-live-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 5px;
+}
+.mt-live-controls button,
+.mt-live-controls select {
+  font: inherit;
+  font-size: 10px;
+  color: #174a70;
+  padding: 3px 0;
+  background: transparent;
+  border: 0;
+}
+.mt-live-controls button:first-child {
+  color: #075f99;
+  font-weight: 650;
+}
+.mt-live-controls button:disabled {
+  opacity: 0.6;
+}
+.mt-live-controls select {
+  width: 37px;
+}
+.mt-live-status {
+  font-size: 10px;
+}
+.mt-runtime-warning {
+  color: #8e4b00;
+}
+.mt-inspect-button {
+  color: #17659b;
+  font-size: 10px;
+}
+.mt-forecast {
+  position: relative;
+}
+.mt-forecast > .mt-inspect-button {
+  position: absolute;
+  bottom: 4px;
+  right: 16px;
+}
+.mt-source-received {
+  animation: mt-received 0.7s ease-out;
+}
+@keyframes mt-received {
+  from {
+    box-shadow: 0 0 0 4px #18b9cb3b;
+  }
+  to {
+    box-shadow: 0 0 0 0 #18b9cb00;
+  }
+}
+.mt-live-details section {
+  margin: 24px 0;
+}
+.mt-live-details article {
+  padding: 12px 0;
+  border-bottom: 1px solid #e4eef6;
+}
+.mt-live-details .mt-action {
+  background: #0871b2;
+}
+.mt-live-facts {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 12px;
+  margin: 16px 0;
+}
+.mt-live-facts dt {
+  font-weight: 600;
+}
+.mt-live-facts dd {
+  margin: 0;
+  color: #42678a;
+  overflow-wrap: anywhere;
+}
+.mt-live-details details {
+  margin: 12px 0;
+}
+.mt-live-details td,
+.mt-live-details code {
+  overflow-wrap: anywhere;
+}
+.mt-live-details summary {
+  cursor: pointer;
+}
+.mt-observed-line {
+  fill: none;
+  stroke: #d04c58;
+  stroke-width: 2.2;
+}
+.mt-live-forecast-line {
+  stroke-dasharray: 5 4;
+}
+.metabolic .mt-flow > small {
+  color: #335b78;
+  background: #f6fbff;
+  width: max-content;
+  max-width: 100%;
+  margin-inline: auto;
+  padding: 1px 4px;
+  border-radius: 4px;
+}
+@media (max-width: 760px) {
+  .mt-replay .mt-replay-label {
+    flex-basis: auto;
+  }
+  .mt-live-controls {
+    flex-wrap: wrap;
+  }
+  .mt-live-facts {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mt-source-received {
+    animation: none;
+  }
+}
+/* D4.2 presentation stays within existing surfaces. */
+.mt-live-controls select {
+  width: 47px;
+}
+.mt-source-active {
+  background: #e5f8fc !important;
+  box-shadow: 0 0 0 2px #32b7d32e;
+  animation: mt-source-story 1s ease-out;
+}
+@keyframes mt-source-story {
+  from {
+    background: #c9f4fd;
+  }
+  to {
+    background: #f5fbff;
+  }
+}
+.mt-refresh-values {
+  animation: mt-value-story 0.75s ease-out;
+}
+@keyframes mt-value-story {
+  from {
+    background: #e8f7fd;
+  }
+  to {
+    background: transparent;
+  }
+}
+.mt-event-notice {
+  display: inline;
+}
+.mt-watch-activity {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #83dcea;
+  font-size: 12px;
+}
+.mt-watch-activity small {
+  display: block;
+  font-size: 9px;
+  margin-top: 3px;
+}
+.mt-watch-rows strong {
+  font-size: 14px;
+}
+.mt-event-markers {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  height: 28px;
+  pointer-events: none;
+}
+.mt-event-markers button {
+  pointer-events: auto;
+  position: absolute;
+  padding: 0;
+  width: 12px;
+  height: 12px;
+  border: 0;
+  background: #eef9fd;
+  color: #0871a4;
+  transform: translateX(-50%);
+  border-radius: 50%;
+}
+.mt-event-markers button[data-source="smartwatch"] {
+  top: 12px;
+  color: #5967ac;
+}
+.mt-event-markers button[data-source="meal_logger"] {
+  top: 24px;
+  color: #ae5b1e;
+  background: #fff4e2;
+}
+.mt-event-popover {
+  position: absolute;
+  right: 0;
+  bottom: 60px;
+  z-index: 5;
+  width: 240px;
+  padding: 12px;
+  background: #fff;
+  color: #173f61;
+  border: 1px solid #d9e9f2;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px #173f6120;
+  font-size: 12px;
+}
+.mt-event-popover > button {
+  float: right;
+  border: 0;
+  background: transparent;
+}
+.mt-event-popover p {
+  margin: 6px 0;
+}
+.mt-story-details article {
+  padding: 16px 0;
+  border-bottom: 1px solid #e4eef6;
+}
+.mt-story-details h4 {
+  margin: 12px 0 4px;
+  font-size: 12px;
+  color: #47657c;
+}
+.mt-story-details pre {
+  overflow: auto;
+  font-size: 11px;
+}
+.mt-story-details details {
+  margin: 12px 0;
+}
+.mt-story-details li {
+  margin: 8px 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  .mt-source-active,
+  .mt-refresh-values {
+    animation: none;
+  }
+}
+.mt-event-markers button svg {
+  width: 9px;
+  height: 9px;
+  display: block;
+  margin: auto;
+}
+.mt-watch-screen > .mt-watch-activity {
+  margin: 4px 0;
+  gap: 5px;
+}
+@media (max-width: 1400px) {
+  .mt-watch-screen > .mt-watch-activity {
+    font-size: 10px;
+  }
+  .mt-watch-activity small {
+    font-size: 8px;
+  }
+}
+.mt-watch-activity {
+  animation: mt-value-story 0.75s ease-out;
+}
+@media (prefers-reduced-motion: reduce) {
+  .mt-watch-activity {
+    animation: none;
+  }
+}

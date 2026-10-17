@@ -1,0 +1,18 @@
+{
+  "seed": 3502026,
+  "folds": 5,
+  "bootstrap_replicates": 2000,
+  "cohort": "Existing 80 D2 development participants only, including the 16 former calibration participants",
+  "family": "D2 XGBoost histogram multi-output trees, fixed D2 hyperparameters and participant-balanced pseudo-Huber loss",
+  "offset": "Current glucose for all dynamic variants; training participant-macro target mean for static-only. Static-only never receives current glucose.",
+  "dynamic": "Unchanged 21 D2 CGM features plus 12 causal prefix features; prefix values gated by existing warm eligibility",
+  "static": "One earliest-recording historical profile per participant; age, sex, diabetes duration, smoking history, alcohol history, coarse source-text medication contexts",
+  "excluded": "All labs; undated anthropometry and diagnosis/complication summaries; recording hypoglycemia outcome; identifiers; synthetic EHR",
+  "negative_control": "Complete static profiles deranged between training participants once per fold; validation profiles correctly linked",
+  "preprocessing": "Dynamic D2 train-only preprocessor; numeric static medians on unique training profiles; training-only one-hot categories; explicit numeric and categorical missingness",
+  "primary": "Equal-participant macro MAE at 120 minutes; all horizons reported",
+  "support_rule": "All four fused-minus-dynamic MAEs negative and all four paired participant-bootstrap upper bounds below zero, plus 120m fused-minus-shuffled upper bound below zero",
+  "permutation_importance": "One deterministic validation perturbation per modality per fold; static whole-profile derangement within validation, dynamic complete-row permutation within each validation participant",
+  "spike": "Optional unchanged D2 incident labels and forecast trajectory ranking only; no fitting or threshold/calibration changes",
+  "stopping": "One fixed five-variant five-fold run, no tuning after results"
+}

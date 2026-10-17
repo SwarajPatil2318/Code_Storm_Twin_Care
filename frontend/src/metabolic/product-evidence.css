@@ -1,0 +1,95 @@
+/* D3.6 progressive disclosure; no changes to dashboard cards, hero or chart. */
+.mt-twin-update {
+  position: relative;
+  z-index: 2;
+  display: block;
+  margin: 5px auto 0;
+  padding: 0;
+  font-size: 10px;
+  line-height: 1.4;
+  color: #42678a;
+  background: transparent;
+}
+.mt-twin-update:hover {
+  text-decoration: underline;
+}
+.mt-information-flow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 16px 0;
+}
+.mt-information-flow article {
+  padding: 16px;
+  border: 1px solid #e4eef6;
+  border-radius: 12px;
+  background: #f4faff;
+}
+.mt-information-flow article > svg {
+  color: #087bc4;
+}
+.mt-information-flow small,
+.mt-flow-output small {
+  color: #42678a;
+  line-height: 1.5;
+  display: block;
+}
+.mt-flow-output {
+  text-align: center;
+  padding: 16px;
+}
+.mt-flow-output > span {
+  font-size: 24px;
+  color: #087bc4;
+}
+.mt-evidence-actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin: 16px 0;
+}
+.mt-evidence-actions button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #087bc4;
+  font-size: 12px;
+}
+.mt-technical section {
+  margin: 24px 0;
+}
+.mt-technical .mt-action {
+  background: #0871b2;
+}
+.mt-technical ul {
+  padding-left: 20px;
+  line-height: 1.8;
+  color: #42678a;
+}
+.mt-technical details {
+  margin: 16px 0;
+}
+.mt-evidence-conclusion {
+  font-weight: 650;
+  color: #10274a;
+}
+.mt-source-role {
+  font-size: 11px;
+  letter-spacing: 0.6px;
+  color: #42678a;
+  margin: 12px 0;
+}
+@media (max-width: 760px) {
+  .mt-information-flow {
+    grid-template-columns: 1fr;
+  }
+  .mt-twin-update {
+    font-size: 9px;
+  }
+}
+.mt-technical th,
+.mt-technical td,
+.mt-lineage th,
+.mt-lineage td {
+  overflow-wrap: anywhere;
+}

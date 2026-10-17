@@ -1,0 +1,147 @@
+/* One compact geometry for both Twins; no viewport-height or stretch sizing. */
+.tc-wearable-card {
+  box-sizing: border-box;
+  container: wearable / inline-size;
+  width: 100%;
+  min-width: 0;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #dbeaf0;
+  color: #16334b;
+  text-align: left;
+  flex: 0 0 auto;
+}
+.tc-wearable-card *, .tc-wearable-card *::before, .tc-wearable-card *::after {box-sizing: border-box;}
+.tc-wearable-card .tc-wearable-heading h2 {
+  margin: 0;
+  font-size: 11px;
+  line-height: 1.4;
+  font-weight: 650;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: #426078;
+}
+.tc-wearable-body {
+  display: grid;
+  grid-template-columns: 96px minmax(0, 1fr);
+  align-items: center;
+  gap: 12px;
+  padding-block: 12px;
+}
+.tc-context-watch {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 96px;
+  max-width: 96px;
+  height: auto;
+  max-height: 128px;
+  min-height: 0;
+  aspect-ratio: 3 / 4;
+  margin: 0;
+  align-self: center;
+  justify-self: center;
+  flex: none;
+  isolation: isolate;
+}
+.tc-context-watch-strap {
+  position: absolute;
+  inset: 0 29%;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #626b74, #283441 60%, #75808a);
+}
+.tc-context-watch-shell {
+  position: relative;
+  width: 92%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  min-height: 0;
+  max-height: 120px;
+  padding: 4px;
+  border: 1px solid #8e9ca8;
+  border-radius: 25px;
+  background: linear-gradient(135deg, #e5e9eb, #8e969e 22%, #f4f5f6 48%, #848f9a 78%, #c4cbd2);
+  box-shadow: 0 5px 12px #1831491a;
+  z-index: 1;
+}
+.tc-context-watch-screen {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  min-width: 0;
+  border: 2px solid #111a22;
+  border-radius: 20px;
+  background: linear-gradient(145deg, #1c2631, #070b10 65%);
+  color: #fff;
+  padding: 7px 3px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  text-align: center;
+}
+.tc-context-watch-screen time {font-size: 10px;line-height: 1.2;color: #e4edf6;max-width: 100%;overflow-wrap: anywhere;}
+.tc-context-watch-screen > svg {flex: 0 0 auto;color: #ff7885;}
+.tc-context-watch-reading {display: flex;flex-direction: column;align-items: center;gap: 2px;}
+.tc-context-watch-reading strong {font-size: 27px;line-height: 1;font-weight: 650;color: #fff;}
+.tc-context-watch-reading small {font-size: 10px;line-height: 1.2;color: #bbcbdc;}
+.tc-context-watch-crown {position: absolute;right: 0;top: 35%;width: 4px;height: 14px;background: linear-gradient(90deg, #e1e5e9, #7e8893);border-radius: 3px;}
+.tc-wearable-readings {min-width: 0;display: grid;gap: 0;}
+.tc-wearable-metric {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 3px;
+  min-width: 0;
+  width: 100%;
+  margin: 0;
+  padding: 6px 0;
+  border: 0;
+  border-bottom: 1px solid #e3edf3;
+  border-radius: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+}
+.tc-wearable-metric:last-child {border-bottom: 0;}
+.tc-metric-label {display: flex;align-items: center;gap: 5px;font-size: 11px;line-height: 1.3;color: #426078;overflow-wrap: anywhere;}
+.tc-metric-label svg {flex: 0 0 auto;}
+.tc-metric-value {display: flex;flex-wrap: wrap;align-items: baseline;gap: 3px 5px;font-size: 14px;line-height: 1.3;font-weight: 650;overflow-wrap: anywhere;min-width: 0;}
+.tc-metric-value small {font-size: 10px;line-height: 1.3;font-weight: 400;color: #426078;}
+.tc-metric-detail {font-size: 10px;line-height: 1.4;color: #426078;overflow-wrap: anywhere;}
+.tc-metric-detail svg {display: block;width: 50px;height: 20px;fill: none;stroke: #d94f62;stroke-width: 1.5;}
+button.tc-wearable-metric {cursor: pointer;}
+button.tc-wearable-metric:hover {background: #eef8fb;}
+button.tc-wearable-metric:focus-visible {outline: 2px solid #007c94;outline-offset: 2px;border-radius: 4px;}
+.tc-wearable-provenance {display: flex;align-items: center;gap: 5px;font-size: 9px;line-height: 1.5;color: #426078;letter-spacing: .01em;overflow-wrap: anywhere;}
+.tc-wearable-provenance i {width: 5px;height: 5px;border-radius: 50%;background: #007c94;flex: 0 0 auto;}
+@container wearable (max-width: 210px) {
+  .tc-wearable-body {grid-template-columns: 80px minmax(0, 1fr);gap: 10px;}
+  .tc-context-watch {width: 80px;max-width: 80px;}
+  .tc-context-watch-shell {padding: 3px;border-radius: 21px;}
+  .tc-context-watch-screen {padding: 5px 2px;border-radius: 16px;gap: 3px;}
+  .tc-context-watch-screen time {font-size: 9px;}
+  .tc-context-watch-screen > svg {width: 13px;height: 13px;}
+  .tc-context-watch-reading strong {font-size: 23px;}
+  .tc-context-watch-reading small {font-size: 9px;}
+}
+@container wearable (max-width: 170px) {
+  .tc-wearable-body {grid-template-columns: minmax(0, 1fr);gap: 8px;}
+  .tc-wearable-readings {grid-template-columns: repeat(2, minmax(0, 1fr));gap: 0 10px;}
+}
+.tc-heart-pulse {animation: tc-context-watch-heart var(--heartbeat, 1s) ease-in-out infinite;}
+@keyframes tc-context-watch-heart {0%,65%,100% {transform: scale(1);} 30% {transform: scale(1.08);}}
+.tc-received {animation: tc-received 900ms ease-out;}
+@keyframes tc-received {0%,45% {outline: 2px solid #21b6ca;} 100% {outline: 2px solid transparent;}}
+.heart-stage[data-emphasis="Rhythm"] .rhythm,.heart-stage[data-emphasis="Activity"] .activity,.heart-stage[data-emphasis="Recovery"] .recovery {box-shadow: 0 0 0 3px #21b6ca55;border-color: #11a9c0;}
+@media(prefers-reduced-motion:reduce) {.tc-received {animation: none;outline: 2px solid #21b6ca;} .tc-context-watch .tc-heart-pulse {animation: none;}}
+
+/* The legacy mobile comparison panel was hidden along with its wearable. */
+@media (max-width: 620px) {
+  .comparison-card.cv-wearable-panel {display: block;order: 3;margin-top: 16px;}
+  .cv-wearable-panel > :not(.tc-wearable-card) {display: none;}
+  .cv-wearable-panel > .tc-wearable-card {margin-top: 0;padding-top: 0;border-top: 0;}
+}
+.tc-context-watch-alert {font-size:9px;line-height:1.35;color:#ffbdc4;max-width:100%;overflow-wrap:anywhere;}
+@container wearable (max-width:210px){.tc-context-watch-alert{font-size:8px;overflow-wrap:normal;}}

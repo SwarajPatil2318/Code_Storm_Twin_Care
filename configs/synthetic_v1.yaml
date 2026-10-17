@@ -1,0 +1,973 @@
+{
+  "baseline": {
+    "activity_day_logsd": 0.18,
+    "activity_waking_hours": [
+      6,
+      22
+    ],
+    "circadian_amplitudes": [
+      3.0,
+      5.0,
+      3.0,
+      0.15,
+      0.1,
+      0.12
+    ],
+    "daily_ar": 0.45,
+    "daily_variability_sd": [
+      8.0,
+      8.0,
+      3.0,
+      1.1,
+      0.5,
+      0.25
+    ],
+    "day_factor_weight": 0.9,
+    "evidence": "PerHeart median/SD/covariance; within-person variance and circadian/drift assumptions anchored to descriptive home variability; CHIRON used as separate daily structure reference",
+    "factor_loadings_hr_bp_spo2_weight_temp": [
+      [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0.15,
+        0.95,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0.05,
+        0.45,
+        0.86,
+        0,
+        0,
+        0
+      ],
+      [
+        -0.05,
+        0,
+        0,
+        0.998,
+        0,
+        0
+      ],
+      [
+        0,
+        0.1,
+        0,
+        0,
+        0.995,
+        0
+      ],
+      [
+        0.05,
+        0,
+        0,
+        0,
+        0,
+        0.998
+      ]
+    ],
+    "home_population_location_offset": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      -0.05
+    ],
+    "home_population_sd_multiplier": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "hour_factor_weight": 0.45,
+    "hourly_ar": 0.82,
+    "hrv_age_effect_per20years": -4,
+    "hrv_mean_bounds": [
+      8,
+      85
+    ],
+    "hrv_mean_sd": [
+      34,
+      12
+    ],
+    "marginal_shape": "empirical_cohort_quantile_copula",
+    "mean_bounds": [
+      [
+        42,
+        112
+      ],
+      [
+        85,
+        175
+      ],
+      [
+        45,
+        100
+      ],
+      [
+        92,
+        99.7
+      ],
+      [
+        48,
+        120
+      ],
+      [
+        34.8,
+        37
+      ]
+    ],
+    "personal_variance_multiplier_logsd": 0.22,
+    "rr_mean_bounds": [
+      10,
+      26
+    ],
+    "rr_mean_sd": [
+      17,
+      2.4
+    ],
+    "sleep_mean_bounds": [
+      4,
+      9
+    ],
+    "sleep_mean_sd": [
+      6.8,
+      0.9
+    ],
+    "stable_baseline_daily_drift_sd": [
+      0.025,
+      0.02,
+      0.02,
+      0.002,
+      0.008,
+      0.001
+    ],
+    "steps_per_day_bounds": [
+      600,
+      12000
+    ],
+    "temperature_location_calibration": "Common -0.05degC correction after the first large cohort exceeded the unchanged daily-quantile gate (0.8526realSD vs0.85); aggregate home distribution calibration, not real outcome fitting"
+  },
+  "batch_patients": 64,
+  "days": 60,
+  "decoys": {
+    "duration_hours": [
+      6,
+      36
+    ],
+    "effects": {
+      "bp_change": [
+        2,
+        0,
+        15,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "exercise": [
+        18,
+        -2,
+        3,
+        1,
+        0,
+        -0.1,
+        2,
+        0,
+        1.2,
+        0,
+        0.05
+      ],
+      "mild_illness": [
+        6,
+        -2,
+        -2,
+        -1,
+        0,
+        -0.5,
+        1,
+        0,
+        -0.15,
+        -0.5,
+        0.5
+      ],
+      "poor_sleep": [
+        2,
+        -3,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -0.15,
+        -1.2,
+        0
+      ],
+      "sensor_artifact": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "spo2_noise": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        -2.5,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "tachycardia": [
+        12,
+        -3,
+        0,
+        0,
+        0,
+        0,
+        0.5,
+        0,
+        0,
+        0,
+        0
+      ],
+      "weight_fluctuation": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1.1,
+        0,
+        0,
+        0
+      ]
+    },
+    "episodes_per_60days": 4,
+    "evidence": "negative control scenarios; not adjudicated source events",
+    "strength_range": [
+      0.5,
+      1.5
+    ],
+    "types": [
+      "poor_sleep",
+      "tachycardia",
+      "exercise",
+      "bp_change",
+      "spo2_noise",
+      "weight_fluctuation",
+      "sensor_artifact",
+      "mild_illness"
+    ]
+  },
+  "design_revision": "v1.2_temperature_location_calibration",
+  "ehr": {
+    "ace_arb_probability": 0.65,
+    "age_bounds": [
+      35,
+      92
+    ],
+    "beta_blocker_probability": 0.75,
+    "bmi_bounds": [
+      17,
+      45
+    ],
+    "bnp_logmean": 5.5,
+    "bnp_logsd": 0.45,
+    "bnp_severity_effect": 1.3,
+    "creatinine_base": 0.9,
+    "creatinine_ckd_add": 0.8,
+    "creatinine_sd": 0.25,
+    "diuretic_probability": 0.8,
+    "evidence": "Synthea FHIR structure/codes; generated HF attributes, lab/medication quantities are assumptions",
+    "hemoglobin_base": 13.5,
+    "hemoglobin_ckd_effect": 1.1,
+    "hemoglobin_sd": 1.0,
+    "lab_bounds": {
+      "bnp": [
+        10,
+        5000
+      ],
+      "creatinine": [
+        0.2,
+        8
+      ],
+      "hemoglobin": [
+        7,
+        18
+      ],
+      "sodium": [
+        125,
+        150
+      ]
+    },
+    "lab_missing_probability": 0.18,
+    "mra_probability": 0.35,
+    "sglt2_probability": 0.35,
+    "sodium_base": 139,
+    "sodium_sd": 2.1,
+    "sodium_severity_effect": 1.5
+  },
+  "evidence": "SYNTHETIC POC",
+  "evidence_label": "NOT VALIDATED",
+  "grid_hours": 1,
+  "grounding_path": "data/synthetic_grounding/grounding.json",
+  "landmarks": {
+    "end_before_first_event": false,
+    "event_policy": "single-event scenario, fixed landmarks throughout followup; post-event labels denote no further generated event, not validated recurrence risk",
+    "history_hours": 168,
+    "horizon_hours": 72,
+    "label_intervals": "0<t<=24;24<t<=48;48<t<=72; no event if t>72 or none with72h followup",
+    "stride_hours": 24
+  },
+  "parameter_evidence": {
+    "Assumptions": "HF profile mixes, EF/medications/labs, HRV/activity/sleep, latent transitions, hazard, causal effect strengths and device error dynamics",
+    "CHIRON": "separate provisional-unit longitudinal daily structure; not HRV/sleep",
+    "PerHeart": "home means/variance/quantiles, paired daily correlations, measurement frequency and observed span coverage",
+    "Synthea": "FHIR resource structures and code library only",
+    "VitalDB": "surgical short-term correlations/reference; no72hHF labels",
+    "eICU": "development-only multivariate/BP dynamics reference; no clinical test labels"
+  },
+  "paths": {
+    "autonomic_first": {
+      "loadings": [
+        1,
+        0.15,
+        0.15,
+        0.15
+      ],
+      "probability": 0.22
+    },
+    "congestion_like": {
+      "loadings": [
+        0.2,
+        1,
+        0.15,
+        0.15
+      ],
+      "probability": 0.25
+    },
+    "mixed": {
+      "loadings": [
+        0.6,
+        0.6,
+        0.6,
+        0.3
+      ],
+      "probability": 0.23
+    },
+    "noisy_atypical": {
+      "loadings": [
+        0.2,
+        0.2,
+        0.2,
+        0.15
+      ],
+      "probability": 0.1
+    },
+    "pressure_hemodynamic": {
+      "loadings": [
+        0.3,
+        0.15,
+        1,
+        0.1
+      ],
+      "probability": 0.2
+    }
+  },
+  "patients": 1000,
+  "phenotype_order": [
+    "hfref_like",
+    "hfpef_like",
+    "hypertensive_hf",
+    "diabetic_metabolic_hf",
+    "hf_ckd",
+    "older_frail_hf",
+    "compensated_hf"
+  ],
+  "phenotype_proportions": [
+    0.22,
+    0.2,
+    0.15,
+    0.13,
+    0.12,
+    0.1,
+    0.08
+  ],
+  "phenotypes": {
+    "compensated_hf": {
+      "age": [
+        61,
+        11
+      ],
+      "bmi": [
+        27,
+        4
+      ],
+      "ckd": 0.15,
+      "diabetes": 0.2,
+      "ef": [
+        38,
+        65
+      ],
+      "female": 0.5,
+      "htn": 0.4,
+      "offset": [
+        -1,
+        -1,
+        0,
+        0.2,
+        -1,
+        0
+      ],
+      "severity": [
+        0.15,
+        0.5
+      ],
+      "steps": [
+        5800,
+        2200
+      ]
+    },
+    "diabetic_metabolic_hf": {
+      "age": [
+        66,
+        10
+      ],
+      "bmi": [
+        32,
+        5
+      ],
+      "ckd": 0.3,
+      "diabetes": 0.95,
+      "ef": [
+        32,
+        65
+      ],
+      "female": 0.5,
+      "htn": 0.7,
+      "offset": [
+        2,
+        2,
+        1,
+        -0.2,
+        3,
+        0
+      ],
+      "severity": [
+        0.3,
+        0.8
+      ],
+      "steps": [
+        3500,
+        1600
+      ]
+    },
+    "hf_ckd": {
+      "age": [
+        72,
+        8
+      ],
+      "bmi": [
+        28,
+        5
+      ],
+      "ckd": 0.95,
+      "diabetes": 0.4,
+      "ef": [
+        30,
+        62
+      ],
+      "female": 0.5,
+      "htn": 0.7,
+      "offset": [
+        0,
+        1,
+        0,
+        -0.2,
+        1,
+        0
+      ],
+      "severity": [
+        0.4,
+        0.85
+      ],
+      "steps": [
+        3200,
+        1500
+      ]
+    },
+    "hfpef_like": {
+      "age": [
+        73,
+        8
+      ],
+      "bmi": [
+        29,
+        5
+      ],
+      "ckd": 0.2,
+      "diabetes": 0.3,
+      "ef": [
+        50,
+        68
+      ],
+      "female": 0.65,
+      "htn": 0.7,
+      "offset": [
+        -1,
+        1,
+        0,
+        0,
+        1,
+        0
+      ],
+      "severity": [
+        0.3,
+        0.75
+      ],
+      "steps": [
+        3800,
+        1700
+      ]
+    },
+    "hfref_like": {
+      "age": [
+        64,
+        10
+      ],
+      "bmi": [
+        27,
+        4
+      ],
+      "ckd": 0.25,
+      "diabetes": 0.28,
+      "ef": [
+        24,
+        40
+      ],
+      "female": 0.35,
+      "htn": 0.55,
+      "offset": [
+        2,
+        -2,
+        -1,
+        -0.3,
+        0,
+        0
+      ],
+      "severity": [
+        0.45,
+        0.9
+      ],
+      "steps": [
+        4200,
+        1800
+      ]
+    },
+    "hypertensive_hf": {
+      "age": [
+        68,
+        9
+      ],
+      "bmi": [
+        29,
+        4
+      ],
+      "ckd": 0.2,
+      "diabetes": 0.25,
+      "ef": [
+        38,
+        65
+      ],
+      "female": 0.5,
+      "htn": 0.95,
+      "offset": [
+        0,
+        8,
+        3,
+        0,
+        0,
+        0
+      ],
+      "severity": [
+        0.3,
+        0.7
+      ],
+      "steps": [
+        4600,
+        2000
+      ]
+    },
+    "older_frail_hf": {
+      "age": [
+        82,
+        5
+      ],
+      "bmi": [
+        24,
+        4
+      ],
+      "ckd": 0.4,
+      "diabetes": 0.3,
+      "ef": [
+        30,
+        65
+      ],
+      "female": 0.65,
+      "htn": 0.6,
+      "offset": [
+        1,
+        -4,
+        -2,
+        -0.3,
+        -4,
+        0
+      ],
+      "severity": [
+        0.4,
+        0.9
+      ],
+      "steps": [
+        2300,
+        1200
+      ]
+    }
+  },
+  "physiology": {
+    "activity_burden_fraction": 0.28,
+    "dbp_pressure_gain": -7,
+    "evidence": "qualitative AHA HF symptom relationships; effect sizes and unsupported wearable modalities assumed",
+    "hr_activity_gain": 10,
+    "hr_autonomic_gain": 9,
+    "hr_pressure_gain": 4,
+    "hrv_autonomic_gain": -9,
+    "hrv_hourly_sd": 2.5,
+    "hrv_sleep_gain": 1.5,
+    "path_response_logsd": 0.3,
+    "rr_congestion_gain": 2.5,
+    "rr_hourly_sd": 0.6,
+    "sbp_pressure_gain": -13,
+    "sleep_autonomic_gain": -0.7,
+    "sleep_daily_sd": 0.45,
+    "spo2_congestion_gain": -1.5,
+    "steps_logsd": 0.3,
+    "temperature_illness_gain": 0.35,
+    "weight_congestion_gain": 1.8,
+    "weight_hourly_sd": 0.08
+  },
+  "quality_bounds": {
+    "diastolic_bp": [
+      20,
+      180
+    ],
+    "heart_rate": [
+      20,
+      250
+    ],
+    "hrv_rmssd": [
+      0,
+      200
+    ],
+    "map": [
+      30,
+      220
+    ],
+    "respiration": [
+      5,
+      70
+    ],
+    "sleep_hours": [
+      0,
+      14
+    ],
+    "spo2": [
+      50,
+      100
+    ],
+    "steps": [
+      0,
+      10000
+    ],
+    "systolic_bp": [
+      50,
+      300
+    ],
+    "temperature": [
+      30,
+      43
+    ],
+    "weight": [
+      20,
+      300
+    ]
+  },
+  "seed": 2026,
+  "sensors": {
+    "adherence_beta": [
+      8,
+      2
+    ],
+    "artifact_probability": 0.0015,
+    "charging_hours": [
+      1,
+      3
+    ],
+    "delay_hours": [
+      0.5,
+      6
+    ],
+    "delay_probability": 0.04,
+    "device_removed_hours": [
+      6,
+      36
+    ],
+    "device_removed_start_per_day": 0.018,
+    "evidence": "PerHeart frequencies and day coverage anchor sparse home measurements; hourly wrist/HRV/sleep cadence, nonwear/charging/latency assumptions",
+    "measurement_noise_sd": [
+      2,
+      3,
+      3,
+      2,
+      0,
+      0.6,
+      0.5,
+      0.15,
+      20,
+      0.2,
+      0.12
+    ],
+    "missing_night_probability": 0.04,
+    "opportunities": {
+      "diastolic_bp": "morning_evening",
+      "heart_rate": "hourly",
+      "hrv_rmssd": "nightly",
+      "map": "derived_bp",
+      "respiration": "morning_evening",
+      "sleep_hours": "morning",
+      "spo2": "morning_evening",
+      "steps": "hourly",
+      "systolic_bp": "morning_evening",
+      "temperature": "morning",
+      "weight": "morning"
+    },
+    "sensor_individual_missing_probability": [
+      0.02,
+      0.06,
+      0.1,
+      0.1,
+      0.1,
+      0.08,
+      0.1,
+      0.1,
+      0.04,
+      0.08,
+      0.1
+    ],
+    "state_adherence_penalty": 0.025,
+    "suspect_noise_probability": 0.012
+  },
+  "signal_bounds": {
+    "diastolic_bp": [
+      35,
+      125
+    ],
+    "heart_rate": [
+      30,
+      190
+    ],
+    "hrv_rmssd": [
+      5,
+      120
+    ],
+    "map": [
+      45,
+      160
+    ],
+    "respiration": [
+      8,
+      40
+    ],
+    "sleep_hours": [
+      2,
+      10
+    ],
+    "spo2": [
+      85,
+      100
+    ],
+    "steps": [
+      0,
+      5000
+    ],
+    "systolic_bp": [
+      70,
+      220
+    ],
+    "temperature": [
+      33,
+      40
+    ],
+    "weight": [
+      35,
+      160
+    ]
+  },
+  "states": {
+    "burden_peak_range": [
+      0.45,
+      1.5
+    ],
+    "burden_variation_sd": 0.08,
+    "episode_start_rate_per_day": 0.04,
+    "event_burden_gain": 1.4,
+    "event_duration_gain": 0.3,
+    "event_hazard_per_hour": 0.0015709374999999999,
+    "event_prevalence_acceptance": [
+      0.2,
+      0.4
+    ],
+    "event_vulnerability_gain": 1.2,
+    "evidence": "interpretable stochastic semi-Markov stress-test assumptions, not clinical event rates",
+    "gradual_duration_hours": [
+      96,
+      264
+    ],
+    "hazard_calibration": "separate512virtual patients,seed2031,indices20000..20511; common-random-number bisection; not real epidemiology",
+    "interepisode_quiet_hours": [
+      72,
+      240
+    ],
+    "never_episode_fraction": 0.12,
+    "rapid_duration_hours": [
+      24,
+      72
+    ],
+    "rapid_fraction": 0.18,
+    "recovery_hours": [
+      24,
+      96
+    ],
+    "recovery_probability": 0.35,
+    "recovery_start_fraction": [
+      0.35,
+      0.75
+    ],
+    "stable_warmup_hours": 168,
+    "state_progress_fractions": [
+      0.15,
+      0.35,
+      0.65
+    ],
+    "target_patient_event_prevalence": 0.3
+  },
+  "validation": {
+    "daily_lag1_min": 0.15,
+    "day_change_sd_ratio_limits": [
+      0.35,
+      2.2
+    ],
+    "diagnostic_max_auroc": 0.95,
+    "evidence": "engineering scenario acceptance gates frozen before pilot diagnostics; not clinical validity thresholds",
+    "max_truth_clipping_fraction": 0.02,
+    "minimum_each_path_patients": 15,
+    "minimum_non_event_recoveries": 30,
+    "minimum_reference_days": 7,
+    "minimum_stable_high_risk": 30,
+    "multivariate_min_ap_over_prevalence": 1.3,
+    "multivariate_min_auroc": 0.6,
+    "nuisance_max_auroc": 0.75,
+    "pilot_patients": 1000,
+    "realism_max_quantile_distance_real_sd": 0.85,
+    "realism_max_wasserstein_real_sd": 0.6,
+    "sensor_missing_fraction_range": [
+      0.03,
+      0.65
+    ],
+    "single_variable_max_auroc": 0.9,
+    "split_proportions": [
+      0.7,
+      0.15,
+      0.15
+    ],
+    "within_sd_ratio_limits": [
+      0.35,
+      2.2
+    ]
+  },
+  "variants": {
+    "baseline_shift": {
+      "offset": [
+        5,
+        0,
+        8,
+        3,
+        0,
+        -0.6,
+        0.5,
+        1,
+        0,
+        0,
+        0
+      ],
+      "start_fraction": 0.5
+    },
+    "high_missingness": {
+      "adherence_multiplier": 0.65
+    },
+    "high_sensor_noise": {
+      "noise_multiplier": 2.5
+    },
+    "normal_noise": {},
+    "reduced_sensor_set": {
+      "remove": [
+        "hrv_rmssd",
+        "spo2",
+        "respiration",
+        "temperature"
+      ]
+    }
+  },
+  "version": "synthetic_v1",
+  "vulnerability": {
+    "age_per_decade": 0.12,
+    "ckd": 0.4,
+    "diabetes": 0.18,
+    "evidence": "scenario assumptions; no real HF endpoint calibration",
+    "hypertension": 0.1,
+    "intercept": -0.8,
+    "low_bp": 0.08,
+    "medication_protection": 0.15,
+    "severity": 1.4,
+    "unobserved_logit_sd": 0.25
+  }
+}

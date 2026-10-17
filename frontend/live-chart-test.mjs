@@ -1,0 +1,13 @@
+import assert from 'node:assert/strict';
+import {readFile} from 'node:fs/promises';
+globalThis.window={innerWidth:1440};
+const {chart}=await import('data:text/javascript;base64,'+Buffer.from(await readFile(new URL('../experience_ui/chart.js',import.meta.url),'utf8')).toString('base64'));
+const ref='2026-10-12T12:00:00Z',at=m=>new Date(Date.parse(ref)+m*60000).toISOString();
+const event=(m,v,receipt=m)=>({event_type:'CGM_READING',quality:{status:'GOOD'},payload:{glucose_mg_dl:v},observed_at:at(m),received_at:at(receipt)});
+const snapshot={evaluated_at:ref,observations:[event(-15,110),event(-60,105),event(-45,106),event(15,200),event(-30,130,15),event(-10,NaN)],meals:[],alerts:[]};
+const state={reference_time:ref,current_glucose:111,forecast:{plus_30m:115,plus_60m:120,plus_90m:116,plus_120m:113},shadow:{available:false}};
+const markup=chart(snapshot,state),observed=markup.match(/<path d="([^"]*)" class="observed-line"/)[1];
+assert(!/NaN|Infinity/.test(markup));assert.equal((observed.match(/M/g)||[]).length,2,'A missing interval must break the observed line');const positions=[...observed.matchAll(/[ML]([0-9.]+),/g)].map(m=>Number(m[1]));assert(positions.every((v,i)=>i===0||v>positions[i-1]),'Observed line must follow chronological order');assert(!markup.includes('200 mg/dL observed'));assert(!markup.includes('130 mg/dL observed'));assert(markup.includes('forecast-line'));assert(!markup.includes('class="expected-line"'));
+const collecting=chart(snapshot,null);assert(!collecting.includes('forecast-line'));assert(collecting.includes('observed-line'));assert(chart({...snapshot,observations:[]},null).includes('Waiting for usable glucose readings'));
+window.innerWidth=390;const mobile=chart(snapshot,state);assert(mobile.includes('viewBox="0 0 360 260"'));assert.equal((mobile.match(/y="245"/g)||[]).length,3,'Mobile labels must be spaced without collisions');
+console.log('PASS: chronological plotting, gap breaks, cutoff times, baseline gating, live collection and mobile labels.');

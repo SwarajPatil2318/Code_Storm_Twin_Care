@@ -1,0 +1,11 @@
+# Runtime versions used by the frozen artifacts. Python 3.12 is the tested baseline.
+# The CPU PyTorch wheel is required by the serialized model module's imports.
+--extra-index-url https://download.pytorch.org/whl/cpu
+numpy==2.2.6
+pandas==2.2.3
+scipy==1.15.3
+scikit-learn==1.6.1
+xgboost-cpu==3.0.5
+torch==2.6.0+cpu
+Pillow==12.3.0
+pypdf==6.19.0

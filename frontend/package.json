@@ -1,0 +1,31 @@
+{
+  "name": "twincare",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "tsc --noEmit && vite build",
+    "test:sources": "node source-timing-test.mjs",
+    "test:chart": "node live-chart-test.mjs",
+    "test:presentation": "node final-stabilization-presentation-test.mjs",
+    "qa": "node release-smoke.mjs"
+  },
+  "dependencies": {
+    "lucide-react": "^0.468.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "playwright": "^1.51.0",
+    "prettier": "^3.9.9",
+    "typescript": "^5.7.0",
+    "vite": "^6.0.0"
+  },
+  "engines": {
+    "node": ">=22 <23"
+  }
+}

@@ -1,0 +1,24 @@
+name: Source checks
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  source-and-frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - run: python -m unittest discover -s release_tests -v
+      - run: npm ci --prefix frontend
+      - run: npm run build --prefix frontend
+      - run: npm run test:sources --prefix frontend
+      - run: npm run test:chart --prefix frontend
+      - run: npm run test:presentation --prefix frontend
+# Private frozen weights/caches are deliberately absent. Real-model checks run locally after restoration.

@@ -1,0 +1,25 @@
+{
+  "version": "METABOLIC_MULTIMODAL_RISK_V1",
+  "seed": 5102026,
+  "outer_participant_folds": 5,
+  "inner_trajectory_folds": 4,
+  "risk_fit_participants_per_outer_fold": 48,
+  "risk_calibration_participants_per_outer_fold": 16,
+  "classifier": {"family": "LogisticRegression", "C": 0.1, "penalty": "l2", "solver": "lbfgs", "max_iter": 2000, "class_weight": null},
+  "calibration": {"family": "LogisticRegression", "C": 1, "max_iter": 1000},
+  "target": "existing incident_two_readings_gt180; no endpoint changes",
+  "static_features": ["age_years", "sex", "diabetes_duration_years", "smoking_pack_years", "alcohol_history", "medication_context", "other_medication_context"],
+  "go_gate": {
+    "maximum_pooled_AUPRC_degradation": 0.02,
+    "maximum_pooled_AUROC_degradation": 0.02,
+    "maximum_pooled_Brier_degradation": 0.01,
+    "fold_AUPRC_degradation_tolerance": 0.03,
+    "minimum_folds_within_tolerance": 4,
+    "directionally_better_than_shuffled": "higher AUPRC or lower Brier",
+    "maximum_ECE_5bins": 0.05,
+    "no_leakage_required": true
+  },
+  "bootstrap_replicates": 1000,
+  "availability": "Earliest same-participant historical onboarding profile; actual source receipt unknown. Offline CGM availability assumed at observation; runtime checks both clocks.",
+  "holdout_access_allowed": false
+}

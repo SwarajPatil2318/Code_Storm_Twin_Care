@@ -1,0 +1,21 @@
+{
+  "reference": "METABOLIC_D2_REFERENCE",
+  "shadow_version": "causal-hour-and-meal-analogs-v1",
+  "shadow_lookback_days": 7,
+  "shadow_embargo_minutes": 120,
+  "shadow_minimum_observations": 192,
+  "shadow_hour_radius_minutes": 45,
+  "shadow_hour_minimum_samples": 8,
+  "shadow_hour_minimum_days": 2,
+  "shadow_meal_minimum_episodes": 3,
+  "shadow_maximum_meal_age_minutes": 180,
+  "divergence_sd_floor_mg_dl": 10,
+  "divergence_display_boundaries": [0.5, 1.0],
+  "rising_display_slope_mg_dl_per_minute": 0.5,
+  "native_cgm_period_minutes": 15,
+  "alignment_tolerance_minutes": 7.5,
+  "demo_seed": 2026,
+  "external_evaluation_allowed": false,
+  "shadow_status": "Descriptive personal expectation; development-only quality assessment, not independently clinically validated",
+  "meal_policy": "Only received meal events; source replay may explicitly assume availability at event time. No causal meal or treatment effect claim."
+}
