@@ -1,10 +1,98 @@
-# TwinCare
+# TwinCare — Personalized Healthcare Digital Twin
 
-**Personal Health Intelligence — a personalized healthcare digital twin research prototype.**
+**Personal Health Intelligence · Digital Twin Challenge 2026 · Team Code Storm**
 
 TwinCare combines a patient workspace, medical-record review, glucose forecasting, a personal expected glucose pattern, meal logging, a shared wearable view, and alerts. The Metabolic Twin supports newly created patients with received observations. The Cardiovascular Twin provides the preserved synthetic research demonstration.
 
 The app runs locally. Wearable and CGM connections currently use explicit synthetic simulation or historical replay; commercial watch pairing is not implemented. Predictions and meal estimates are research outputs, not clinically validated care recommendations.
+
+## Team and institution
+
+| Detail | Information |
+| --- | --- |
+| Team | **Code Storm** |
+| Members | **Swaraj Patil · Rutika Shripati** |
+| College | **Vishwakarma Institute of Technology** |
+| Challenge | **Digital Twin Challenge 2026 — Prototype & Code Submission** |
+| Public repository | [Code_Storm_Twin_Care](https://github.com/SwarajPatil2318/Code_Storm_Twin_Care) |
+
+## Explore TwinCare
+
+Watch the product walkthrough and explore the design, architecture and intelligence behind TwinCare.
+
+| Resource | Format | Link |
+| --- | --- | --- |
+| Project presentation and outcomes | PDF/PPT | **PENDING — presentation link** |
+| System architecture | PDF/PPT | **PENDING — architecture link** |
+| AI/ML framework | Supporting document | **PENDING — AI/ML framework link** |
+| Product walkthrough | 15–20 minute unlisted YouTube video | **PENDING — video link** |
+
+For a closer look at the implementation, see the [runtime architecture](docs/ARCHITECTURE.md) and the AI/ML details below.
+
+## Problem statement
+
+A current glucose value shows what is happening now, but it does not explain how that value compares with a person's historical pattern or what may happen next. Clinical records, glucose streams, meals and activity also arrive through separate workflows. TwinCare brings these inputs into a patient-owned longitudinal workspace, forecasts future glucose, and explains departures from the patient's expected pattern while preserving source times and uncertainty.
+
+## Healthcare use case
+
+The main implemented use case is **research monitoring for a person with Type 2 diabetes**:
+
+1. Create a patient and review/confirm their clinical information.
+2. Receive glucose observations and contextual wearable/meal information.
+3. Estimate glucose at four future horizons and compare it with an eligible personal expected trajectory.
+4. Inspect contributing signals, review the separate two-hour spike-risk estimate, and acknowledge policy-triggered alerts in the dashboard or wearable view.
+
+The product supports research review and explanation; it does not recommend treatment or automate clinical decisions. The cardiovascular screen preserves the existing synthetic research demonstration rather than claiming new-patient cardiovascular prediction.
+
+## Technical stack
+
+| Layer | Implementation |
+| --- | --- |
+| Patient workspace | JavaScript modules, HTML/CSS, Python HTTP APIs |
+| Twin dashboards | React 19, TypeScript, Vite 6, Lucide icons; shared wearable component |
+| Backend and storage | Python 3.12, loopback HTTP services, SQLite, owner-scoped records and predictions |
+| Forecasting and risk | XGBoost, scikit-learn, NumPy, pandas and SciPy; CPU PyTorch for research-model compatibility |
+| Clinical documents and photos | pypdf, Pillow; supported structured clinical JSON/FHIR, text-based PDFs, reviewed image uploads |
+| Optional food-photo AI | Gemini REST vision adapter with structured JSON output; manual review/fallback |
+| Verification | Python unittest, frontend source/chart tests, Playwright browser checks and GitHub Actions source/build CI |
+
+Exact Python runtime versions are in [requirements.txt](requirements.txt); frontend dependencies are locked in [package-lock.json](frontend/package-lock.json).
+
+## AI/ML model and framework details
+
+| Component | Implemented method and role |
+| --- | --- |
+| Glucose forecast model | Frozen **XGBoost multi-output gradient-boosted trees**: 180 trees, maximum depth 4, learning rate 0.05, L2 regularization 5 and a custom pseudo-Huber objective. Predicts glucose at **+30, +60, +90 and +120 minutes**. |
+| Causal input construction | Nine native 15-minute CGM observations over the previous 120 minutes produce **21 core features**: lags, slopes, variability, distribution statistics, acceleration and time. Eligibility and missingness checks precede inference. |
+| Personalization | Cold inference uses the population model; eligible warm inference adds **12 causal personal-history features**. Eligibility includes at least 192 prefix observations and 50 elapsed hours. The prefix excludes the current input window. |
+| Shadow Twin / personal expectation | A historical expected trajectory for the same patient. Predicted-versus-expected separation describes personal divergence; it is **not a spike probability or a causal intervention simulator**. |
+| Multimodal spike risk | A **separate regularized, calibrated logistic model** receives 7 historical clinical fields and 26 dynamic fields: 21 core CGM features, 4 forecast residuals and predicted peak. Its 33 raw fields are encoded/preprocessed for the two-hour event estimate. |
+| Gemini meal analysis | Optional image-based food and approximate nutrition proposals. These require correction/confirmation and do not replace the forecaster, generate clinical diagnoses or directly change frozen model parameters. |
+
+The primary research cohort contains 100 Type 2 diabetes participants, split by whole participant into 80 development and 20 held-out participants. Within development, 64 supply forecast fitting and 16 supply reserved calibration. Preprocessing fits training participants only; runtime features exclude observations or receipts after the prediction cutoff. Unrelated datasets are never linked as if they were the same patient.
+
+The forecast and risk implementations are available in [forecast models](src/metabolic_d2/models.py), [causal features](src/metabolic_d2/data.py), [personal expected trajectory](src/metabolic_d3/shadow.py), and [multimodal risk](src/metabolic_risk_v1/model.py).
+
+## Recorded outcomes and evidence boundaries
+
+The existing one-time D2 held-out evaluation reported the following **participant-macro MAE**, in mg/dL, for the frozen deployed cold/warm dispatch. These are previously recorded retrospective research results, not a new evaluation or a claim of clinical benefit.
+
+| Forecast horizon | MAE (mg/dL) |
+| --- | ---: |
+| +30 minutes | 9.354 |
+| +60 minutes | 16.360 |
+| +90 minutes | 21.022 |
+| +120 minutes | 23.796 |
+
+Source: [reviewed submission evidence](docs/SUBMISSION_EVIDENCE.md), transcribed from the existing aggregate D2 forecasting report. The separate multimodal risk model was development-validated; adding EHR context is **not claimed to improve the direct glucose forecast or to establish clinical superiority**. Synthetic scenarios demonstrate software integration, not clinical validation.
+
+The clean source release also passed a fresh Python environment install, `npm ci`, frontend build, **14 release tests**, and browser smoke checks for the patient workspace and both twin dashboards. Those tests include real cold/warm model execution, baseline/risk availability, owner isolation and integrity checks. The public CI configuration runs source/frontend checks; private-model acceptance requires the local runtime bundle.
+
+## Open-source license details
+
+The project's original code is released under the **[MIT License](LICENSE)**, copyright **2026 Swaraj Patil and Rutika Shripati**. The license permits use, modification and redistribution subject to retaining its notice and terms, and includes its standard warranty disclaimer. See the complete license text for the grant and the [official MIT license reference](https://opensource.org/license/mit).
+
+Third-party dependencies retain their own licenses. The project MIT grant does not relicense research datasets, external media, supplied assets or private model artifacts. Product illustrations are supplied for this prototype; no blanket dataset/model/media redistribution right is asserted. No credentials, patient records, raw cohorts or model weights are published by this source release.
 
 ## What is included
 
@@ -121,4 +209,24 @@ artifacts/                Local runtime metadata and reports; excluded from Git
 - [Architecture and model boundaries](docs/ARCHITECTURE.md)
 - [GitHub packaging and private assets](docs/GITHUB_PREPARATION.md)
 
-No open-source license has been selected for this project. Add the owner's chosen license before representing it as licensed for reuse.
+## Final submission checklist
+
+The statuses below reflect the locally prepared README. Upload these changes before treating them as present on GitHub.
+
+- [x] Team details: Code Storm, Swaraj Patil and Rutika Shripati.
+- [x] College information: Vishwakarma Institute of Technology.
+- [x] Project title.
+- [x] Problem statement.
+- [x] Healthcare use case.
+- [x] Technical stack.
+- [x] AI/ML model/framework details in this README.
+- [ ] Unlisted YouTube demo link added; video duration verified as 15–20 minutes.
+- [x] Open-source license details and the MIT LICENSE file included.
+- [ ] Public architecture PDF/PPT link added.
+- [ ] Public project presentation PDF/PPT link added.
+- [ ] All final submission links checked without sign-in or permission requests.
+
+**Public access check:** the [repository](https://github.com/SwarajPatil2318/Code_Storm_Twin_Care) and its [currently published README](https://github.com/SwarajPatil2318/Code_Storm_Twin_Care/blob/main/README.md) were reachable without authentication on **17 October 2026**. The new material links and the video have not been supplied or checked yet. Public access to a page does not verify video duration, visibility settings, or downloadable file permissions.
+
+**Runtime accessibility:** full model inference currently depends on a separately supplied **private runtime bundle**. It is not publicly downloadable through this repository. Therefore, this README does **not** claim that an anonymous visitor can run the complete forecasting pipeline from the public clone alone. Resolve the judges' access/reproducibility expectations before marking an “all files publicly accessible” requirement complete; do not publish patient data or model artifacts merely to fill that checkbox.
+

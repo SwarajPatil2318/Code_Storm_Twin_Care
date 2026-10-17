@@ -14,10 +14,10 @@ SOURCE_DIRS={'src','patient_alerts','patient_connections','patient_experience','
 UI_DIRS={'alerts_ui','connections_ui','experience_ui','inference_ui','judge_ui','meal_logger_ui',
          'patient_product_ui','readiness_ui'}
 TOOLS={'runtime_bundle.py','run.py','doctor.py','create_sample_records.py','github_release.py'}
-DOCS={'ARCHITECTURE.md','SETUP.md','MANUAL_TESTING.md','GITHUB_PREPARATION.md'}
+DOCS={'ARCHITECTURE.md','SETUP.md','MANUAL_TESTING.md','GITHUB_PREPARATION.md','SUBMISSION_EVIDENCE.md'}
 FRONTEND={'package.json','package-lock.json','index.html','tsconfig.json','vite.config.ts',
           'source-timing-test.mjs','live-chart-test.mjs','final-stabilization-presentation-test.mjs','release-smoke.mjs'}
-ROOT_FILES={'README.md','.gitignore','.env.example','.nvmrc','.python-version','requirements.txt'}
+ROOT_FILES={'README.md','LICENSE','.gitignore','.env.example','.nvmrc','.python-version','requirements.txt'}
 DENIED={'AGENTS.md','.env','.git','.venv','node_modules','__pycache__','dist','build','.codex','.agents','.aws'}
 SECRET_PATTERNS=[re.compile(r'AIza[0-9A-Za-z_-]{30,}'),re.compile(r'sk-(?:proj-)?[0-9A-Za-z_-]{24,}'),
                  re.compile(r'gh[pousr]_[0-9A-Za-z]{30,}'),re.compile(r'-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----')]

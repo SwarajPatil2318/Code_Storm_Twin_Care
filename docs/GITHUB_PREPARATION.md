@@ -27,7 +27,7 @@ git status --short
 
 Even after local runtime restoration and frontend installation, Git must ignore `data/`, `artifacts/`, `.env`, dependency directories and `frontend/dist/`. Ignore rules do not remove already tracked files from an existing repository. Check `git ls-files` before publishing. This workspace arrived without usable Git metadata, so no pre-existing remote/history is assumed or rewritten.
 
-The release has no invented license grant. Add an owner-approved LICENSE separately. Runtime bundles and datasets may have their own distribution restrictions; source packaging does not change those rights.
+The original project code is released under the team-approved MIT license in `LICENSE`. Runtime bundles, datasets, media and third-party components retain their own rights and restrictions; the project license does not grant additional distribution rights for them.
 
 ## Local release verification
 
