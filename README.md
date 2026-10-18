@@ -22,10 +22,10 @@ Watch the product walkthrough and explore the design, architecture and intellige
 
 | Resource | Format | Link |
 | --- | --- | --- |
-| Project presentation and outcomes | PDF/PPT | **PENDING — presentation link** |
-| System architecture | PDF/PPT | **PENDING — architecture link** |
-| AI/ML framework | Supporting document | **PENDING — AI/ML framework link** |
-| Product walkthrough | 15–20 minute unlisted YouTube video | **PENDING — video link** |
+| Project presentation and outcomes | PDF/PPT | [View presentation](https://drive.google.com/file/d/10YFaL3yA_6Of2AKsIUNUEldb9NuliauE/view?usp=sharing) |
+| System architecture | PDF/PPT | [View architecture](https://drive.google.com/file/d/1RCI218JNKtIm2BcXLpIph_OH7CCrRnKa/view?usp=sharing) |
+| AI/ML framework | Supporting document | [View AI/ML framework](https://drive.google.com/file/d/1fZSdvW7SoX-eOYV8UjxYOK_O-fDAwZvS/view?usp=sharing) |
+| Product walkthrough | 15–20 minute unlisted YouTube video | [Watch the walkthrough](https://youtu.be/-8qKDi5uB3g) |
 
 For a closer look at the implementation, see the [runtime architecture](docs/ARCHITECTURE.md) and the AI/ML details below.
 
@@ -197,7 +197,7 @@ experience_ui/            Patient overview and onboarding shell
 patient_*/                Patient records, connections, meals, readiness, inference, alerts
 live_simulation/          Explicit synthetic CGM/wearable input generation
 src/                      Scientific implementations, frozen-model adapters, cached twin APIs
-tools/                    Setup checks, launcher, private assets, sample records, source exporter
+tools/                    Launcher, runtime asset setup, environment checks, sample records
 configs/                  Versioned protocols and runtime configuration
 release_tests/            Packaging, environment and integrity regression tests
 docs/                     Setup, architecture, manual QA and publication boundaries
@@ -220,13 +220,13 @@ The statuses below reflect the locally prepared README. Upload these changes bef
 - [x] Healthcare use case.
 - [x] Technical stack.
 - [x] AI/ML model/framework details in this README.
-- [ ] Unlisted YouTube demo link added; video duration verified as 15–20 minutes.
+- [x] YouTube demo link added; the reviewed local final video runs 16 minutes 56 seconds.
 - [x] Open-source license details and the MIT LICENSE file included.
-- [ ] Public architecture PDF/PPT link added.
-- [ ] Public project presentation PDF/PPT link added.
+- [x] Architecture document link added.
+- [x] Project presentation link added.
 - [ ] All final submission links checked without sign-in or permission requests.
 
-**Public access check:** the [repository](https://github.com/SwarajPatil2318/Code_Storm_Twin_Care) and its [currently published README](https://github.com/SwarajPatil2318/Code_Storm_Twin_Care/blob/main/README.md) were reachable without authentication on **17 October 2026**. The new material links and the video have not been supplied or checked yet. Public access to a page does not verify video duration, visibility settings, or downloadable file permissions.
+**Public access check:** the [repository](https://github.com/SwarajPatil2318/Code_Storm_Twin_Care) and its [currently published README](https://github.com/SwarajPatil2318/Code_Storm_Twin_Care/blob/main/README.md) were reachable without authentication on **17 October 2026**. The presentation, architecture, AI/ML framework and YouTube links were added on **18 October 2026**. Their anonymous access, hosted file formats and YouTube visibility settings have not been independently verified. The local final video was reviewed at 16 minutes 56 seconds; the hosted upload has not been checked against that file.
 
 **Runtime accessibility:** full model inference currently depends on a separately supplied **private runtime bundle**. It is not publicly downloadable through this repository. Therefore, this README does **not** claim that an anonymous visitor can run the complete forecasting pipeline from the public clone alone. Resolve the judges' access/reproducibility expectations before marking an “all files publicly accessible” requirement complete; do not publish patient data or model artifacts merely to fill that checkbox.
 
