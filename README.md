@@ -22,10 +22,10 @@ Watch the product walkthrough and explore the design, architecture and intellige
 
 | Resource | Format | Link |
 | --- | --- | --- |
+| Product walkthrough | 15–20 minute unlisted YouTube video | [Watch the walkthrough](https://youtu.be/-8qKDi5uB3g) |
 | Project presentation and outcomes | PDF/PPT | [View presentation](https://drive.google.com/file/d/10YFaL3yA_6Of2AKsIUNUEldb9NuliauE/view?usp=sharing) |
 | System architecture | PDF/PPT | [View architecture](https://drive.google.com/file/d/1RCI218JNKtIm2BcXLpIph_OH7CCrRnKa/view?usp=sharing) |
 | AI/ML framework | Supporting document | [View AI/ML framework](https://drive.google.com/file/d/1fZSdvW7SoX-eOYV8UjxYOK_O-fDAwZvS/view?usp=sharing) |
-| Product walkthrough | 15–20 minute unlisted YouTube video | [Watch the walkthrough](https://youtu.be/-8qKDi5uB3g) |
 
 For a closer look at the implementation, see the [runtime architecture](docs/ARCHITECTURE.md) and the AI/ML details below.
 
@@ -71,7 +71,6 @@ Exact Python runtime versions are in [requirements.txt](requirements.txt); front
 
 The primary research cohort contains 100 Type 2 diabetes participants, split by whole participant into 80 development and 20 held-out participants. Within development, 64 supply forecast fitting and 16 supply reserved calibration. Preprocessing fits training participants only; runtime features exclude observations or receipts after the prediction cutoff. Unrelated datasets are never linked as if they were the same patient.
 
-The forecast and risk implementations are available in [forecast models](src/metabolic_d2/models.py), [causal features](src/metabolic_d2/data.py), [personal expected trajectory](src/metabolic_d3/shadow.py), and [multimodal risk](src/metabolic_risk_v1/model.py).
 
 ## Recorded outcomes and evidence boundaries
 
@@ -151,7 +150,6 @@ python tools/create_sample_records.py
 
 Starting without prior history requires enough actual received 15-minute observations to fill the 120-minute input window. Personalization needs substantially more historical support, including the existing 50-hour eligibility rule and observation-count checks. A synthetic history load is a testing convenience, not a clinical validation result.
 
-See [manual testing](docs/MANUAL_TESTING.md) for expected states, cold/warm behavior, alerts, and both twin dashboards.
 
 ## Optional Gemini meal-photo analysis
 
@@ -208,25 +206,3 @@ artifacts/                Local runtime metadata and reports; excluded from Git
 - [Detailed setup and troubleshooting](docs/SETUP.md)
 - [Architecture and model boundaries](docs/ARCHITECTURE.md)
 - [GitHub packaging and private assets](docs/GITHUB_PREPARATION.md)
-
-## Final submission checklist
-
-The statuses below reflect the locally prepared README. Upload these changes before treating them as present on GitHub.
-
-- [x] Team details: Code Storm, Swaraj Patil and Rutika Shripati.
-- [x] College information: Vishwakarma Institute of Technology.
-- [x] Project title.
-- [x] Problem statement.
-- [x] Healthcare use case.
-- [x] Technical stack.
-- [x] AI/ML model/framework details in this README.
-- [x] YouTube demo link added; the reviewed local final video runs 16 minutes 56 seconds.
-- [x] Open-source license details and the MIT LICENSE file included.
-- [x] Architecture document link added.
-- [x] Project presentation link added.
-- [ ] All final submission links checked without sign-in or permission requests.
-
-**Public access check:** the [repository](https://github.com/SwarajPatil2318/Code_Storm_Twin_Care) and its [currently published README](https://github.com/SwarajPatil2318/Code_Storm_Twin_Care/blob/main/README.md) were reachable without authentication on **17 October 2026**. The presentation, architecture, AI/ML framework and YouTube links were added on **18 October 2026**. Their anonymous access, hosted file formats and YouTube visibility settings have not been independently verified. The local final video was reviewed at 16 minutes 56 seconds; the hosted upload has not been checked against that file.
-
-**Runtime accessibility:** full model inference currently depends on a separately supplied **private runtime bundle**. It is not publicly downloadable through this repository. Therefore, this README does **not** claim that an anonymous visitor can run the complete forecasting pipeline from the public clone alone. Resolve the judges' access/reproducibility expectations before marking an “all files publicly accessible” requirement complete; do not publish patient data or model artifacts merely to fill that checkbox.
-
